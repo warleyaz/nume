@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Wrapper } from "./style.js";
+import Modal from "../../components/Modal";
 
 const travelSvg = require("../../assets/images/travel.svg");
 const servicesSvg = require("../../assets/images/services.svg");
@@ -7,12 +8,21 @@ const car1 = require("../../assets/images/frota/car1.png");
 const airportZoomSvg = require("../../assets/images/airportZoom.svg");
 
 export default () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <Wrapper>
+      {showModal ? (
+        <Modal onClose={() => setShowModal(false)}>
+          <h1>oi</h1>
+        </Modal>
+      ) : (
+        ""
+      )}
       <header>
         <h1>Reserve tranquilidade para seu trajeto</h1>
         <h4>Estamos ansiosos para viajar com você</h4>
-        <button>Orçar agora</button>
+        <button onClick={() => setShowModal(true)}>Orçar agora</button>
       </header>
       <main>
         <img src={travelSvg} alt="svg" />
