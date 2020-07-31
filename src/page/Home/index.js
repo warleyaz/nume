@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Wrapper } from "./style.js";
 import Modal from "../../components/Modal";
-import  NavBar  from "../../components/NavBar"
+import  NavBar  from "../../components/NavBar";
+import Header from "../../components/Header";
 
 const travelSvg = require("../../assets/images/travel.svg");
 const servicesSvg = require("../../assets/images/services.svg");
@@ -12,7 +13,10 @@ export default () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <Wrapper>
+    <>
+      <NavBar />
+      <Header setShowModal={() => setShowModal(true)} />
+      <Wrapper>
       {showModal ? (
         <Modal onClose={() => setShowModal(false)}>
           <h1>oi</h1>
@@ -20,12 +24,7 @@ export default () => {
       ) : (
         ""
       )}
-      <NavBar></NavBar>
-      <header>
-        <h1>Reserve tranquilidade para seu trajeto</h1>
-        <h4>Estamos ansiosos para viajar com você</h4>
-        <button onClick={() => setShowModal(true)}>Orçar agora</button>
-      </header>
+    
       <main>
         <img src={travelSvg} alt="svg" />
         <p>
@@ -119,5 +118,7 @@ export default () => {
           </div>
         </footer>
       </Wrapper>
+    </>
+    
   );
 };
