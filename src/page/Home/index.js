@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Wrapper } from "./style.js";
 import Modal from "../../components/Modal";
-import  NavBar  from "../../components/NavBar";
+import NavBar from "../../components/NavBar";
 import Header from "../../components/Header";
+import MainSection from "../../components/MainSection";
+
 
 const travelSvg = require("../../assets/images/travel.svg");
 const servicesSvg = require("../../assets/images/services.svg");
 const car1 = require("../../assets/images/frota/car1.png");
 const airportZoomSvg = require("../../assets/images/airportZoom.svg");
+
 
 export default () => {
   const [showModal, setShowModal] = useState(false);
@@ -16,7 +19,8 @@ export default () => {
     <>
       <NavBar />
       <Header setShowModal={() => setShowModal(true)} />
-      <Wrapper>
+      <MainSection />
+
       {showModal ? (
         <Modal onClose={() => setShowModal(false)}>
           <h1>oi</h1>
@@ -24,16 +28,8 @@ export default () => {
       ) : (
         ""
       )}
-    
-      <main>
-        <img src={travelSvg} alt="svg" />
-        <p>
-          Todos os veículos de nossa moderna frota são rastreados via satélite,
-          dispõem de confortável serviço de bordo para oferecer entretenimento
-          durante todo o percurso e podem ser contratados 24 horas por dia, 7
-          dias por semana por diferentes canais de comunicação, como telefone,
-          e-mail, WhatsApp e através da plataforma U-Van.
-        </p>
+      
+      {/*       
         <div className="carroussel">
           <ul>
             <li>
@@ -53,24 +49,9 @@ export default () => {
               <button>Reservar</button>
             </li>
           </ul>
-        </div>
+        </div> */}
 
-        <div id="services">
-            <img src={servicesSvg} alt="services" />
-            <p>
-              Cada veículo da AZ é equipado para garantir o máximo conforto dos
-              passageiros durante o percurso. Para isso, contam com TV digital,
-              sistema de som, reprodutor de mídias óticas, bancos reclináveis,
-              condicionamento de ar, iluminação interna para leitura, geladeira e
-              vidros elétricos. A depender da necessidade do cliente, estes
-              veículos estão disponíveis em duas opções de lotação máxima.
-            </p>
-          </div>
-          <div className="carroussel">
-            <img src={car1} alt="carro 10 assentos" />
-          </div>
-        </main>
-        <footer>
+        {/* <footer>
           <div id="about">
             <img src={airportZoomSvg} alt="logo AirportZOOM" />
             <p>
@@ -116,8 +97,7 @@ export default () => {
           <div id="copyright">
             <span>copyright</span>
           </div>
-        </footer>
-      </Wrapper>
+        </footer> */}
     </>
     
   );
