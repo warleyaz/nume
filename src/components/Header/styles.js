@@ -6,7 +6,7 @@ import bannerImage from "../../assets/images/header.png";
 export const BackgroundImage = styled.header`
   display: flex;
   background-image: url(${bannerImage});
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   height: 600px;
