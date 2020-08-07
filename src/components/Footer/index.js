@@ -20,10 +20,10 @@ import {
   Copyright,
 } from "./styles";
 
-const Footer = () => {
+const Footer = ({footerRef}) => {
   return (
     <Container>   
-      <ContainerAbout>
+      <ContainerAbout ref={footerRef}>
         <LogoFooter src={Logo} alt="Logo AirportZoom"/>
         <p>
         Fundada em São Paulo no ano de 2019, a Airport Zoom é uma empresa de
