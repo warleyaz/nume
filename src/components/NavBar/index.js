@@ -4,23 +4,23 @@ import Logo from "../../assets/images/airportZoom.svg";
 
 import { Container, ItensContainer, ListContainer } from "./style.js";
 
-const NavBar = () => {
+const NavBar = ({handleFooterLink}) => {
   return (
     <Container>
       <ItensContainer>
         <img src={Logo} alt="Logo" />
         <ListContainer>
           <li>
-            <a href="">Orçamento</a>
+            <a href="#" onClick={() => {}} >Orçamento</a>
           </li>
           <li>
-            <a hrf="">Contato</a>
+            <a href="#" onClick={handleFooterLink} >Contato</a>
           </li>
           <li>
-          <a hrf="">Institucional</a>
+            <a href="#" onClick={() => {}} >Institucional</a>
           </li>
           <li>
-            <a hrf=""> Serviços </a>
+            <a href="#" onClick={() => {}} > Serviços </a>
           </li>
         </ListContainer>
 
