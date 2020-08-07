@@ -16,13 +16,14 @@ import {
   VehicleCard
 } from "./styles";
 
-const MainSection = () => {
+const MainSection = ({servicesRef}) => {
   return (
     <Container>
       <ContentWrapper>
         <ApresentationWrapper> 
           <ImgTravel src={TravelIlustration} alt="Ilustração de Viagem"/>
-          <p>
+
+          <p ref={servicesRef}>
             Todos os veículos de nossa moderna frota são rastreados via satélite,
             dispõem de confortável serviço de bordo para oferecer entretenimento
             durante todo o percurso e podem ser contratados 24 horas por dia, 7
@@ -65,7 +66,6 @@ const MainSection = () => {
 
       </ContentWrapper>
     </Container>
-    
   )
 }
 
