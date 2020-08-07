@@ -8,23 +8,19 @@ import Footer from "../../components/Footer";
 
 export default () => {
   const [showModal, setShowModal] = useState(false);
-  const footerRef = useRef(null);
+  const footerRef = useRef();
+  const servicesRef = useRef();
 
-  const handleFooterLink = () => {
-    if (!footerRef) {
-      return;
-    }
-    const offsetValue = footerRef.current.offsetTop;
-    // window.scrollY = offsetValue;
-  }
-
+  const scrollToRef = (ref) =>  {
+    console.log(ref.current.offsetTop);
+    window.scrollTo(0, ref.current.offsetTop)
+  }   
   return (
     <>
-      <NavBar handleFooterLink={handleFooterLink} />
+      <NavBar handleClick={scrollToRef} refs={{ footerRef, servicesRef }} />
       <Header setShowModal={() => setShowModal(true)} />
-      <MainSection />
+      <MainSection servicesRef={servicesRef}/>
       <Footer footerRef={footerRef}/>
-
       {showModal ? (
         <Modal onClose={() => setShowModal(false)}>
           <h1>oi</h1>
@@ -34,6 +30,4 @@ export default () => {
       )}
       </>
       )
-}   
-
-  
+};
