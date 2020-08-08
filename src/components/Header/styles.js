@@ -11,13 +11,22 @@ export const BackgroundImage = styled.header`
   width: 100%;
   height: 600px;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
+
+  @media(max-width: 800px) {
+    height: 70vh;
+  } 
 `
 export const BannerContent = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 600px; 
   align-items: center;
+
+  @media(max-width: 800px) {
+    text-align: center;
+    padding: 80px 29px 0px 29px;
+  } 
 
   h1 {
     font-size:44px;

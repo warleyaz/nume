@@ -9,6 +9,9 @@ export const Container = styled.div`
   align-items: center;
   padding-top: 40px;
   padding-bottom: 80px;
+  @media(max-width: 800px) {
+    padding-bottom: 20px;
+  }
 `
 export const ContentWrapper = styled.main`
   max-width:50vw;
@@ -16,20 +19,20 @@ export const ContentWrapper = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media(max-width: 800px) {
+    max-width:80vw;
+  }
 `
 export const ImgTravel = styled.img`
-  width: 50vw;
-  
+  width: 100%; 
 `
 export const ServicesTravel = styled.img` 
-  width: 50vw;
+  width: 100%;
   margin-bottom: 40px;
-
 `
 
 export const Car = styled.img`
   width: 100%;
-
 `
 const GenericWrapper = styled.div`
   display: flex;
