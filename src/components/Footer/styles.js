@@ -23,16 +23,26 @@ export const ContainerAbout = styled.div`
     line-height: 24px; 
     letter-spacing: -0.02em;  
     text-align: justify;
+    @media(max-width: 800px) {
+      font-size: 13px;
+      max-width: 60vw;
+      margin-left: 12px;
+      line-height: 18px;
+    }
   }
 `
 export const LogoFooter = styled.img`
   height: 170px;
   width: 170px;
-  align-items: center;
+  align-items: center; 
+  @media(max-width: 800px) {
+    width: 90px;
+  }
 `
 export const Licenses = styled.div`
   width: 100%;
   display:flex;
+  flex-flow: wrap;
   align-items: center;
   justify-content: space-evenly;
   padding: 0 15px;
@@ -48,6 +58,11 @@ export const Informations = styled.div`
   align-items: flex-start;
   justify-content: space-evenly;
   padding: 10px 20%;
+  @media(max-width: 800px) {
+    padding: 10px 30px 10px 15px;
+    justify-content: space-between;
+    flex-flow: wrap;
+  }
 `
 export const FirstColumn = styled.div`
   color: #E2E2E2;
@@ -55,6 +70,9 @@ export const FirstColumn = styled.div`
   align-items: center;
   letter-spacing: -0.02em;
   font-size: 12px;
+  @media(max-width: 800px) {
+    margin-bottom: 18px;
+  }
 `
 export const SecondColumn = styled.div`
   color: #E2E2E2;
