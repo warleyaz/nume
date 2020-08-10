@@ -14,6 +14,11 @@ export const ContainerAbout = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 55px;
+  @media(max-width: 800px) {
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 15px;
+  }
 
   p{
     color: ${colors.white};
@@ -24,10 +29,11 @@ export const ContainerAbout = styled.div`
     letter-spacing: -0.02em;  
     text-align: justify;
     @media(max-width: 800px) {
-      font-size: 13px;
-      max-width: 60vw;
+      font-size: 14px;
+      max-width: 80vw;
       margin-left: 12px;
       line-height: 18px;
+      margin-top: -20px;
     }
   }
 `
@@ -49,8 +55,10 @@ export const Licenses = styled.div`
   
   img{
     width: 180px;
+    @media(max-width: 800px) {
+   width: 100px;
   }
-  
+  }  
 `
 export const Informations = styled.div`
   background-color: #474747;
