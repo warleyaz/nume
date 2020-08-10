@@ -9,10 +9,14 @@
     "bootstrap": "^4.5.2",
     "react": "^16.13.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-bootstrap": "^1.3.0",
 =======
     "react-datepicker": "^3.1.3",
 >>>>>>> 15c758f... feature modal
+=======
+    "react-datepicker": "^3.1.3",
+>>>>>>> e88f2812f58c9859959d8ef13611701709aeb99e
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
