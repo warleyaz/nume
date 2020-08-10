@@ -3,7 +3,7 @@ import { colors } from "../../assets/colors";
 import { device } from "../../assets/size.js";
 const headerPng = require("../../assets/images/header.png");
 
-export const Wrapper = styled.div`
+export const WrapperModal = styled.div`
   @media (${device.tablet}) {
     display: flex;
     width: 100%;
