@@ -70,6 +70,9 @@ export const FirstColumn = styled.div`
   align-items: center;
   letter-spacing: -0.02em;
   font-size: 12px;
+  p { 
+    margin-bottom: 0;
+  }
   @media(max-width: 800px) {
     margin-bottom: 18px;
   }
@@ -80,6 +83,9 @@ export const SecondColumn = styled.div`
   align-items: center;
   letter-spacing: -0.02em;
   font-size: 12px;  
+  p { 
+    margin-bottom: 0;
+  }
 `
 export const ThirdyColumn = styled.div`
   color: #E2E2E2;
@@ -87,6 +93,9 @@ export const ThirdyColumn = styled.div`
   align-items: center;
   letter-spacing: -0.02em;
   font-size: 12px;
+  p { 
+    margin-bottom: 0;
+  }
 `
 export const FourthColumn = styled.div`
   color: #E2E2E2;
@@ -94,6 +103,9 @@ export const FourthColumn = styled.div`
   align-items: center;
   letter-spacing: -0.02em;
   font-size: 12px;
+  p { 
+    margin-bottom: 0;
+  }
 `
 export const Copyright = styled.div`
   display: flex;

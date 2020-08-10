@@ -8,7 +8,7 @@ import FretamentoIcon from "../../assets/images/Fretamento.svg";
 import CityIcon from "../../assets/images/CityTour.svg";
 import ViagensIcon from "../../assets/images/Viagens.svg";
 
-import { SliderCardContainer } from "./styles";
+import { SliderCardContainer, SliderContainer } from "./styles";
 
 const SliderCard = ({icon, title, description }) => (
   <div>
@@ -27,12 +27,20 @@ const SliderComponent = () => {
     infinite: false,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3
+    slidesToScroll: 3,
+    responsive: [{
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      } 
+    ]
   };
 
   return (
     <>
-      <Slider {...settings} className="slider-container" >
+      <SliderContainer {...settings} className="slider-container" >
         <SliderCardContainer>
           <SliderCard icon ={FretamentoIcon} title="FRETAMENTO" description="Evite imprevistos com esta eficiente condução. Para pequenos ou grandes grupos de passageiros." />
         </SliderCardContainer>
@@ -57,7 +65,7 @@ const SliderComponent = () => {
           <SliderCard icon ={ViagensIcon} title="VIAGENS" description="Lorem ipsum dolar sit ame ia" />
         </SliderCardContainer>
         
-      </Slider>
+      </SliderContainer>
   </>
   )
 };
