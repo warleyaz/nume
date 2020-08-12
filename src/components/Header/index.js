@@ -2,7 +2,6 @@ import React from "react";
 
 import {BackgroundImage, BannerContent} from "./styles"
 
-
 const Header = ({setShowModal}) => {
   return ( 
     <BackgroundImage> 

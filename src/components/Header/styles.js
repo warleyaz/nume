@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {colors} from "../../assets/colors";
+import {normalizeFont} from "../../assets/size";
 
 import bannerImage from "../../assets/images/header.png";
 
@@ -29,7 +30,7 @@ export const BannerContent = styled.div`
   } 
 
   h1 {
-    font-size:44px;
+    font-size: ${normalizeFont(44)};
     font-weight: bold;
     text-align: center;
     line-height: 52px;
@@ -37,7 +38,7 @@ export const BannerContent = styled.div`
   }
 
   h4 {
-    font-size: 16px;
+    font-size: ${normalizeFont(16)};
     font-weight: 500;
     line-height: 20px;
     text-transform: uppercase;
@@ -50,7 +51,7 @@ export const BannerContent = styled.div`
   button {
     color: ${colors.white};
     font-weight: 500;
-    font-size: 16px;
+    font-size: ${normalizeFont(16)}
     line-height: 20px;
     background-color: ${colors.black};
     border-radius: 4px;

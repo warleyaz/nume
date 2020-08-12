@@ -8,6 +8,8 @@ const size = {
   desktop: "2560px",
 };
 
+export const normalizeFont = (pixels) => `${pixels/16}rem`;
+
 export const device = {
   mobileS: `(min-width: ${size.mobileS})`,
   mobileM: `(min-width: ${size.mobileM})`,

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {colors} from "../../assets/colors";
+import {normalizeFont} from "../../assets/size";
 
 export const Container = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ export const Container = styled.div`
   padding-bottom: 80px;
   @media(max-width: 800px) {
     padding-bottom: 20px;
+
   }
 `
 export const ContentWrapper = styled.main`
@@ -78,12 +80,13 @@ export const VehicleCard = styled.div`
     border-radius: 8px;
 
     p{
-    font-size:16px;
+    font-size:${normalizeFont(16)};
     text-align: center;
     font-weight: 500;
-  }
-
-  }
-
- 
+    @media(max-width: 800px) {
+      font-size: 12px;
+      margin-top: 10px;
+    }   
+    }
+  } 
 `

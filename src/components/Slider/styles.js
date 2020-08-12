@@ -1,5 +1,12 @@
 import styled from "styled-components";
 import {colors} from "../../assets/colors";
+import Slider from "react-slick";
+
+export const SliderContainer = styled(Slider)`
+  @media(max-width: 800px) {
+    max-width: 80vw;
+  }
+`
 
 export const SliderCardContainer = styled.div`
   width: 212px;
@@ -14,7 +21,10 @@ export const SliderCardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 16px;
-    height: 20vw;
+    
+    @media(min-width: 1000px) {
+      height: 20vw;
+    }
 
     img {
       width: 25px;
@@ -55,7 +65,7 @@ export const SliderCardContainer = styled.div`
         border: 0px;
         border-radius: 4px;
         margin-top: 24px;
-        max-width: 110px;
+        /* max-width: 110px; */
       }
     }
 
