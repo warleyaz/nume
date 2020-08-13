@@ -12,7 +12,7 @@ import {
   ContainerDiv,
   Toggle } from "./style.js";
 
-const NavBar = ({refs, handleClick}) => {
+const NavBar = ({refs, handleClick, setShowModal}) => {
   return (
     <NavbarContainer collapseOnSelect expand="lg">
         <ContainerDiv>
@@ -21,7 +21,7 @@ const NavBar = ({refs, handleClick}) => {
           <CollapseContainer className="mr-auto">
 
             <NavContainer>
-              <NavLink href="#orcamento" onClick={() => {} }>Orçamento</NavLink>
+              <NavLink href="#orcamento" onClick={setShowModal}>Orçamento</NavLink>
               <NavLink href="#contato" onClick={() => handleClick(refs.footerRef)}>Contato</NavLink>
               <NavLink href="#institucional" onClick={() => handleClick(refs.footerRef)}>Institucional</NavLink>
               <NavLink href="#servicos" onClick={() => handleClick(refs.servicesRef)}>Serviços</NavLink>
