@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import FretamentoIcon from "../../assets/images/Fretamento.svg";
 import CityIcon from "../../assets/images/CityTour.svg";
 import ViagensIcon from "../../assets/images/Viagens.svg";
+import TransladoIcon from "../../assets/images/Translado.svg";
 
 import { SliderCardContainer, SliderContainer } from "./styles";
 
@@ -54,15 +55,7 @@ const SliderComponent = () => {
         </SliderCardContainer>
 
         <SliderCardContainer>
-          <SliderCard icon ={FretamentoIcon} title="FRETAMENTO" description="Lorem ipsum dolar sit ame ia" />
-        </SliderCardContainer>
-
-        <SliderCardContainer>
-          <SliderCard icon ={CityIcon} title="CITY TUR" description="Lorem ipsum dolar sit ame ia" />
-        </SliderCardContainer>
-
-        <SliderCardContainer>
-          <SliderCard icon ={ViagensIcon} title="VIAGENS" description="Lorem ipsum dolar sit ame ia" />
+          <SliderCard icon ={TransladoIcon} title="TRANSLADO" description="Oferecemos deslocamento ágil e de confiança. Ideal para reuniões, eventos corporativos e transporte aeroportuário." />
         </SliderCardContainer>
         
       </SliderContainer>

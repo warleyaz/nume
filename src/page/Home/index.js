@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 
 import Modal from "../../components/Modal";
-import Budget from "../../components/Modal/components/Budget";
 import NavBar from "../../components/NavBar";
 import Header from "../../components/Header";
 import MainSection from "../../components/MainSection";
@@ -18,18 +17,12 @@ export default () => {
   }   
 
   return (
-    <>
-      <NavBar handleClick={scrollToRef} refs={{ footerRef, servicesRef }} />
+    <div style={{position: 'relative'}}>
+      <NavBar handleClick={scrollToRef} setShowModal={() => setShowModal(true)} refs={{ footerRef, servicesRef }} />
       <Header setShowModal={() => setShowModal(true)} />
       <MainSection servicesRef={servicesRef} />
       <Footer footerRef={footerRef} />
-      {showModal ? (
-        <Modal onClose={() => setShowModal(false)}>
-          <Budget />
-        </Modal>
-      ) : (
-        ""
-      )}
-    </>
+      {showModal && (<Modal onClose={() => setShowModal(false)} />)}
+    </div>
   );
 };
