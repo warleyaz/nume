@@ -34,12 +34,17 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
     destination: '',
     departureDate: '',
     arrivalDate: '',
+    timeArrivalDate: '',
+    timeDepartureDate: '',
     locationType: 'Fretamento',
     passengerQuantity: '',
   };
   
   const [modalScreen, setModalScreen] = useState(1);
-  const [formData, setFormData] = useState(initialState)
+  const [formData, setFormData] = useState(initialState);
+  const [hasArrivalInput, setHasArrivalInput] = useState(false);
+  
+  console.log(formData)
   
   const sendWhatsappMessage = useSendWhatsappMessage();
 
@@ -50,13 +55,13 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    const {departureDate, arrivalDate, startingPoint, destination, passengerQuantity} = formData;
+    const {departureDate, arrivalDate, timeDepartureDate, timeArrivalDate,startingPoint, destination, passengerQuantity} = formData;
 
     const msg = `
-      Olá desejo reservar uma viagem para o dia ${departureDate} até o dia ${arrivalDate} do local ${startingPoint} até o local ${destination} para ${passengerQuantity} passageiros no valor de R$ 350,00. Podemos confirmar ?
+      Olá desejo reservar uma viagem para o dia ${departureDate} as ${timeDepartureDate} horas ${hasArrivalInput ? `E a sua volta para o dia ${arrivalDate} ás ${timeArrivalDate}`: '' } do local ${startingPoint} até o local ${destination} para ${passengerQuantity} passageiros no valor de R$ 350,00. Podemos confirmar ?
     `
 
-    const number = 5553981255458;
+    const number = 5511984586000;
 
     sendWhatsappMessage({msg, number});
 
@@ -76,6 +81,17 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
 
     const parseDepartureDate = parseISO(formData.departureDate);
     const departureDateFormated = format(parseDepartureDate, 'dd/MM/yyyy');
+    
+    if(!formData.arrivalDate){
+      setFormData({
+        ...formData,
+        departureDate: departureDateFormated,
+      });
+
+      setModalScreen(2);
+      
+      return;
+    }
 
     const parseArrivalDate = parseISO(formData.arrivalDate);
     const arrivalDateFormated = format(parseArrivalDate, 'dd/MM/yyyy');
@@ -126,15 +142,32 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
 
                 <DateInputFieldWrapper>
                   <InputField isDateField>
-                    <label>Data de partida</label>
-                    <input type="date" value={formData.departureDate} onChange={(event) => handleInputChange(event, 'departureDate')} />
+                    <label>Data de Partida</label>
+                    <input type="date" value={formData.departureDate} onChange={(event) => handleInputChange(event, 'departureDate')} />       
                   </InputField>
-
                   <InputField isDateField>
-                    <label>Data de retorno</label>
-                    <input type="date" value={formData.arrivalDate} onChange={(event) => handleInputChange(event, 'arrivalDate')} />
-                  </InputField>
+                    <label>Horário Partida</label>
+                    <input type="time" value={formData.timeDepartureDate} onChange={(event) => handleInputChange(event, 'timeDepartureDate')} />
+                  </InputField>                  
                 </DateInputFieldWrapper>
+
+
+                {hasArrivalInput ? (
+                  <DateInputFieldWrapper>
+                    <InputField isDateField>
+                      <label>Data de Retorno </label>
+                      <input type="date" value={formData.arrivalDate} onChange={(event) => handleInputChange(event, 'arrivalDate')} />
+                    </InputField>
+
+                    <InputField isDateField>
+                      <label>Horário de Retorno</label>
+                      <input type="time" value={formData.timeArrivalDate} onChange={(event) => handleInputChange(event, 'timeArrivalDate')} />
+                    </InputField>
+                  </DateInputFieldWrapper>
+                  ) : 
+                  <button onClick={() => setHasArrivalInput(true)} >Ida e Volta</button>
+                }
+                
 
                 <InputField>
                   <label>Tipo de locação</label>
@@ -208,9 +241,16 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
                     <img src={payment} alt="icone"/> 
                     <p>R$ 500,23</p>
                   </div>
-                  <div>
-                    <img src={calendarIcon} alt="icone"/> 
-                    <p>20/11/2020</p>
+                  <div>                    
+                      <img src={calendarIcon} alt="icone"/> 
+                      <p>{`${formData.departureDate} ás ${formData.timeDepartureDate}`}</p>
+ 
+                  {hasArrivalInput && (
+                      <div>
+                        <img src={calendarIcon} alt="icone"/> 
+                        <p>{`${formData.arrivalDate} ás ${formData.timeArrivalDate}`}</p>
+                      </div>
+                    )}
                   </div>
                 </CardRow>
               </ModalCardContainer>

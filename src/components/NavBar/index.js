@@ -7,7 +7,7 @@ import {
   NavContainer, 
   NavLink, 
   LogoContainer, 
-  CollapseContainer, 
+  CollapseContainer,
   ListContainer,
   ContainerDiv,
   Toggle } from "./style.js";
