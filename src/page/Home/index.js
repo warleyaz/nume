@@ -18,11 +18,11 @@ export default () => {
 
   return (
     <div style={{position: 'relative'}}>
+      {showModal && (<Modal onClose={() => setShowModal(false)} />)}
       <NavBar handleClick={scrollToRef} setShowModal={() => setShowModal(true)} refs={{ footerRef, servicesRef }} />
       <Header setShowModal={() => setShowModal(true)} />
       <MainSection servicesRef={servicesRef} />
       <Footer footerRef={footerRef} />
-      {showModal && (<Modal onClose={() => setShowModal(false)} />)}
     </div>
   );
 };

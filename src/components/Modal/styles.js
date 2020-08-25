@@ -18,36 +18,117 @@ export const Layer = styled.div`
 `
 
 export const ModalContainer = styled.div`
-  background-color: ${colors.white};
-  position: fixed;
-  top: 100px;
-  left: 400px;
-  width: 50%;
-  height: 80vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   z-index: 200;
-  border-radius: 16px;
-  box-shadow: 0px 2px 8px rgba(17, 14, 27, 0.09);
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
 `
 
 export const FirstModalWrapper = styled.div`
+  background-color: ${colors.white};
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80vh;
+  top: 4em;
+  border-radius: 15px;
+  margin-top: 3em;
+  overflow: hidden;
+  @media (min-width: 1024px) {
+    max-width: 50%;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 80vw;
+    margin: 4em 1.2em 0 0;
+    height: calc(100vh);
+  }
+  span {
+    z-index: 1500;
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    
+    @media ((max-width: 1023px) and (min-width: 769px)) {
+      left: 85%;
+      top: 1.8%;
+    }
+    @media (min-width: 1024px) {
+      left: calc(80vw - 8em);
+      top: 1.8%;
+    }
+    @media (max-width: 768px) {
+      left: 78%;
+      top: 2.5%;
+    }
+    cursor: pointer;
+    &:after {
+      content: ' ';
+      display: block;
+      height: 25px;
+      width: 3px;
+      background: black;
+      position: absolute;
+      transform: rotate(-45deg);
+      margin-left: 40%;
+    }
+    &:before {
+      content: ' ';
+      display: block;
+      height: 25px;
+      width: 3px;
+      background: black;
+      position: absolute;
+      transform: rotate(45deg);
+      margin-left: 40%;
+    }
+    &:hover {
+      opacity: .5;
+    }
+  }
 `
 
 export const ModalDescription = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  background-image: url(${CalculatorImage});
-  background-size: cover;
-  padding: 40px 30px;
-  max-width: 50%;
+  background-position: -15px 0px; 
+  background-size: 110% 100%;
+  padding: 20px 25px;
+  /* max-width: 50%; */
 
   h2 {
     font-size: ${normalizeFont(34)};
     font-weight: bold;
     margin-bottom: 40px;
+  }
+
+  @media (min-width: 1024px) {
+    background-image: url(${CalculatorImage});
+    max-width: 50%;
+  }
+  @media (max-width: 768px) {
+    max-height: 50%;
+    padding: 20px 25px 0px 25px;
+    h2 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
+
+    p {
+      font-size: .8em;
+    }
+  }
+  @media (min-height: 700px){
+    p {
+      font-size: 1em;
+    }
   }
 `
 
@@ -60,10 +141,49 @@ export const ModalForm = styled.div`
   position: relative;
   padding: 24px;
 
-  form {
-    margin-top: 94px;
+   /* Removes the clear button from date inputs */
+  input[type="date"]::-webkit-clear-button {
+      display: none;
+  }
 
-    @media (max-width: 1500px) {
+  /* Removes the spin button */
+  input[type="date"]::-webkit-inner-spin-button { 
+      display: none;
+  }
+
+  /* Always display the drop down caret */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+      color: #2c3e50;
+  }
+
+  @media (max-width: 768px){
+    padding: 10px 24px 10px;
+    input[type="date"] {
+      font-size: .8em;
+      padding: 5px;
+    }
+    #wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      .rowDiv {
+        max-width: 45%;
+        font-size: .5em;
+      }
+      .rowDiv:nth-child(1) {
+        
+      }
+      .rowDiv:nth-child(2) {
+        
+      }
+    }
+  }
+
+  form {
+    /* margin-top: 94px; */
+
+    @media (min-width: 1024px) {
       margin-top: 50px;
     }
 
@@ -84,11 +204,11 @@ export const ModalForm = styled.div`
 `
 
 export const CloseIcon = styled.img`
-  width: 15px;
+  /* width: 15px;
   position: absolute;
   top: ${({position}) => position ? position : 20}px; 
   right: ${({position}) => position ? position : 20}px;
-  cursor: pointer;
+  cursor: pointer; */
 `
 
 export const InputField = styled.div`
@@ -114,7 +234,7 @@ export const InputField = styled.div`
   }
 
   input {
-    width: ${({isDateField}) => isDateField ? 'calc(100% - 12px)' : `${100}%`};
+    width: ${({isDateField}) => isDateField ? 'calc(100%)' : `${100}%`};
     border-radius: 4px;
     border: 1px solid #afafaf;
     background-color: ${colors.white};
@@ -127,7 +247,12 @@ export const InputField = styled.div`
 
 export const DateInputFieldWrapper = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
+  .rowDiv {
+    max-width: 45%;
+  }
 `
 
 export const SecondModalWrapper = styled.div`
@@ -202,8 +327,7 @@ export const CardRow = styled.div`
   }
 
   div {
-    flex: 1;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
 
     p {
       font-size: 14px;
