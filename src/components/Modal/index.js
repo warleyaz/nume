@@ -39,19 +39,18 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
     locationType: 'Fretamento',
     passengerQuantity: '',
   };
-  
+
   const [modalScreen, setModalScreen] = useState(1);
   const [formData, setFormData] = useState(initialState);
   const [hasArrivalInput, setHasArrivalInput] = useState(false);
   
+  console.log(formData)
+  
   const sendWhatsappMessage = useSendWhatsappMessage();
 
-  const handleCloseModal = (e) => {
-    console.log(e);
-    if (e.target.id === id){
+  const handleCloseModal = () => {
     setFormData(initialState);
     onClose();
-    }
   }
 
   const handleSubmitForm = (event) => {
@@ -114,12 +113,11 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
 
   return (
     <>
-      {/* <Layer onClick={handleCloseModal}/> */}
+      <Layer onClick={handleCloseModal}/>
 
-      <ModalContainer id={id} onClick={(e) => handleCloseModal(e)}>
+      <ModalContainer>
         {modalScreen === 1 && (
           <FirstModalWrapper>
-            <span onClick={() => onClose()}></span>
             <ModalDescription>
               <h2>Orçamento</h2>
               <p>
@@ -130,6 +128,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
               </p>
             </ModalDescription>
             <ModalForm>
+              <CloseIcon src={closeIcon} alt="Fechar modal" onClick={handleCloseModal}/>
               <form onSubmit={handleSubmit}>
                 <InputField>
                   <label>Ponto de partida</label>
@@ -142,35 +141,52 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
                 </InputField>
 
                 <DateInputFieldWrapper>
-                  <InputField isDateField className='rowDiv'>
-                    <label>Data de partida</label>
-                    <input type="date" value={formData.departureDate} onChange={(event) => handleInputChange(event, 'departureDate')} />
+                  <InputField isDateField>
+                    <label>Data de Partida</label>
+                    <input type="date" value={formData.departureDate} onChange={(event) => handleInputChange(event, 'departureDate')} />       
                   </InputField>
-
-                  <InputField isDateField className='rowDiv'>
-                    <label>Data de retorno</label>
-                    <input type="date" value={formData.arrivalDate} onChange={(event) => handleInputChange(event, 'arrivalDate')} />
-                  </InputField>
+                  <InputField isDateField>
+                    <label>Horário Partida</label>
+                    <input type="time" value={formData.timeDepartureDate} onChange={(event) => handleInputChange(event, 'timeDepartureDate')} />
+                  </InputField>                  
                 </DateInputFieldWrapper>
 
-                <div id='wrapper'>
-                  <InputField className='rowDiv'>
-                    <label>Tipo de locação</label>
-                      <select onChange={(event) => handleInputChange(event, 'locationType')} name="Locação"value={formData.locationType}>
-                        <option selected="selected" value="Fretamento">Fretamento</option>
-                        <option value="CityTour">City Tour</option>
-                        <option value="Viagens">Viagens</option>
-                        <option value="Translado">Translado</option>
-                      </select>
 
-                  </InputField>
+                {hasArrivalInput ? (
+                  <DateInputFieldWrapper>
+                    <InputField isDateField>
+                      <label>Data de Retorno </label>
+                      <input type="date" value={formData.arrivalDate} onChange={(event) => handleInputChange(event, 'arrivalDate')} />
+                    </InputField>
+
+                    <InputField isDateField>
+                      <label>Horário de Retorno</label>
+                      <input type="time" value={formData.timeArrivalDate} onChange={(event) => handleInputChange(event, 'timeArrivalDate')} />
+                    </InputField>
+                  </DateInputFieldWrapper>
+                  ) : 
+                  <div className="button-arrival">
+                    <button onClick={() => setHasArrivalInput(true)} >Ida e Volta</button>
+                  </div>
+                }
                 
-                  <InputField className='rowDiv'>
-                    <label>Quantidade de passageiros</label>
-                    <input type="number" value={formData.passengerQuantity} onChange={(event) => handleInputChange(event, 'passengerQuantity')} />
-                  </InputField>
-                </div>
 
+                <InputField>
+                  <label>Tipo de locação</label>
+                    <select onChange={(event) => handleInputChange(event, 'locationType')} name="Locação"value={formData.locationType}>
+                      <option selected="selected" value="Fretamento">Fretamento</option>
+                      <option value="CityTour">City Tour</option>
+                      <option value="Viagens">Viagens</option>
+                      <option value="Translado">Translado</option>
+                    </select>
+
+                </InputField>
+
+                <InputField>
+                  <label>Quantidade de passageiros</label>
+                  <input type="number" value={formData.passengerQuantity} onChange={(event) => handleInputChange(event, 'passengerQuantity')} />
+                </InputField>
+      
                 <div className="button-container">
                   <button type="submit">Avançar</button>
                 </div> 
