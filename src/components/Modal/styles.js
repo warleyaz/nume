@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { colors } from "../../assets/colors";
-import { device, normalizeFont } from "../../assets/size";
+import { normalizeFont } from "../../assets/size";
 
 import CalculatorImage from '../../assets/images/calculator.png';
 
@@ -19,30 +19,63 @@ export const Layer = styled.div`
 
 export const ModalContainer = styled.div`
   background-color: ${colors.white};
+  box-shadow: 0px 2px 8px rgba(17, 14, 27, 0.09);
   position: fixed;
-  top: 100px;
-  left: 400px;
-  width: 50%;
-  height: 80vh;
   z-index: 200;
   border-radius: 16px;
-  box-shadow: 0px 2px 8px rgba(17, 14, 27, 0.09);
+
+  @media (min-width: 200px) {
+    width: 100vw;
+    top: 10vh;
+    position: absolute;
+  }
+
+  @media (min-width: 555px) {
+    width: 100vw;
+    top: 5vh;
+    position: fixed;
+  } 
+
+  @media (min-width: 700px) {
+    width: 90vw;
+    top: 5vh;
+    left: 5vw;
+    position: fixed;
+  } 
+
+  @media (min-width: 1000px) {
+    width: 80vw;
+    top: 10vh;
+    left: 10vw;
+    position: fixed;
+  } 
+
+  @media (min-width: 1200px) {
+    width: 60vw;
+    top: 10vh;
+    left: 20vw;
+    position: fixed;
+  } 
 `
 
 export const FirstModalWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  flex-wrap: wrap;
 `
 
 export const ModalDescription = styled.div`
   flex: 1;
   width: 100%;
-  height: 100%;
   background-image: url(${CalculatorImage});
   background-size: cover;
   padding: 40px 30px;
   max-width: 50%;
+
+  @media (min-width: 200px) {
+    max-width: 100%;
+  }
 
   h2 {
     font-size: ${normalizeFont(34)};
@@ -57,13 +90,14 @@ export const SecondModalDescription = styled.p`
 
 export const ModalForm = styled.div`
   flex: 1;
-  position: relative;
   padding: 24px;
 
   form {
-    margin-top: 94px;
+    @media (min-width: 200px) {
+      margin-top: 0px;
+    }
 
-    @media (max-width: 1500px) {
+    @media (min-width: 555px) {
       margin-top: 50px;
     }
 
@@ -80,6 +114,13 @@ export const ModalForm = styled.div`
       padding: 10px 22px;
       border: 1px solid #000;
     }
+
+    .button-arrival {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
   }
 `
 
@@ -95,6 +136,10 @@ export const InputField = styled.div`
   flex-direction: column;
   margin-bottom: 16px;
   flex: 1;
+
+  ${({isDateField}) => isDateField ? css`
+      max-width: 48%;
+    ` : null}
 
   label {
     font-size: 14px;
@@ -114,7 +159,7 @@ export const InputField = styled.div`
   }
 
   input {
-    width: ${({isDateField}) => isDateField ? 'calc(100% - 12px)' : `${100}%`};
+    width: 100%;
     border-radius: 4px;
     border: 1px solid #afafaf;
     background-color: ${colors.white};
@@ -128,7 +173,7 @@ export const InputField = styled.div`
 export const DateInputFieldWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  `
+`
 
 export const SecondModalWrapper = styled.div`
   padding: 24px;
@@ -192,7 +237,7 @@ export const CardRow = styled.div`
   display: flex;
   flex:1;
   align-items: center;
-
+  flex-wrap: wrap;
 
   img {
     width: 18px;
@@ -202,6 +247,7 @@ export const CardRow = styled.div`
   }
 
   div {
+    min-width: 200px;
     flex: 1;
     margin-bottom: 8px;
 

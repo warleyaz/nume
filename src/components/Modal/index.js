@@ -39,7 +39,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
     locationType: 'Fretamento',
     passengerQuantity: '',
   };
-  
+
   const [modalScreen, setModalScreen] = useState(1);
   const [formData, setFormData] = useState(initialState);
   const [hasArrivalInput, setHasArrivalInput] = useState(false);
@@ -165,7 +165,9 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
                     </InputField>
                   </DateInputFieldWrapper>
                   ) : 
-                  <button onClick={() => setHasArrivalInput(true)} >Ida e Volta</button>
+                  <div className="button-arrival">
+                    <button onClick={() => setHasArrivalInput(true)} >Ida e Volta</button>
+                  </div>
                 }
                 
 
