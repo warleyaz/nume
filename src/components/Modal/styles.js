@@ -23,33 +23,28 @@ export const ModalContainer = styled.div`
   position: fixed;
   z-index: 200;
   border-radius: 16px;
-
   @media (min-width: 200px) {
     width: 100vw;
     top: 10vh;
     position: absolute;
   }
-
   @media (min-width: 555px) {
     width: 100vw;
     top: 5vh;
     position: fixed;
   } 
-
   @media (min-width: 700px) {
     width: 90vw;
     top: 5vh;
     left: 5vw;
     position: fixed;
   } 
-
   @media (min-width: 1000px) {
     width: 80vw;
     top: 10vh;
     left: 10vw;
     position: fixed;
   } 
-
   @media (min-width: 1200px) {
     width: 60vw;
     top: 10vh;
@@ -72,11 +67,9 @@ export const ModalDescription = styled.div`
   background-size: cover;
   padding: 40px 30px;
   max-width: 50%;
-
   @media (min-width: 200px) {
     max-width: 100%;
   }
-
   h2 {
     font-size: ${normalizeFont(34)};
     font-weight: bold;
@@ -91,21 +84,17 @@ export const SecondModalDescription = styled.p`
 export const ModalForm = styled.div`
   flex: 1;
   padding: 24px;
-
   form {
     @media (min-width: 200px) {
       margin-top: 0px;
     }
-
     @media (min-width: 555px) {
       margin-top: 50px;
     }
-
     .button-container {
       display: flex;
       justify-content: flex-end;
     }
-
     button {
       background-color: ${colors.black};
       font-size: 16px;
@@ -114,13 +103,11 @@ export const ModalForm = styled.div`
       padding: 10px 22px;
       border: 1px solid #000;
     }
-
     .button-arrival {
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
   }
 `
 
@@ -136,17 +123,14 @@ export const InputField = styled.div`
   flex-direction: column;
   margin-bottom: 16px;
   flex: 1;
-
   ${({isDateField}) => isDateField ? css`
       max-width: 48%;
     ` : null}
-
   label {
     font-size: 14px;
     font-weight: 600;
     color: ${colors.black}
   }
-
   select{
     border-radius: 4px;
     border: 1px solid #afafaf;
@@ -157,7 +141,6 @@ export const InputField = styled.div`
     color: #474747;
      width: 100%; 
   }
-
   input {
     width: 100%;
     border-radius: 4px;
@@ -186,15 +169,11 @@ export const SecondModalWrapper = styled.div`
 export const SecondModalHeader = styled.div`
   display: flex;
   align-items: center;
-
   div {
     display: flex;
     align-items: center;
     cursor: pointer;
     transition: opacity 0.3s ease;
-
-
-
     p {
       margin: 0;
       margin-left: 10px;
@@ -204,11 +183,9 @@ export const SecondModalHeader = styled.div`
       letter-spacing: -0.02em;
     }
   }
-
   p:hover {
     opacity: 0.7;
   }
-
   h2 {
     font-size: 36px;
     font-weight: 700;
@@ -224,7 +201,6 @@ export const ModalCardContainer = styled.div`
   flex-direction: column;
   padding: 16px 16px 10px 16px;
   border-radius: 8px;
-
   h3 {
     font-size: 20px;
     font-weight: 500;
@@ -238,19 +214,16 @@ export const CardRow = styled.div`
   flex:1;
   align-items: center;
   flex-wrap: wrap;
-
   img {
     width: 18px;
     height: 18px;
     object-fit: contain;
     margin-right: 10px;
   }
-
   div {
     min-width: 200px;
     flex: 1;
     margin-bottom: 8px;
-
     p {
       font-size: 14px;
       display: initial;
@@ -267,7 +240,6 @@ export const SecondModalFooter = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-
   h2 {
     font-size: 20px;
     font-weight: 500;
@@ -275,15 +247,12 @@ export const SecondModalFooter = styled.div`
     color: ${colors.black};
     margin-bottom: 8px;
   }
-
   p {
     font-size: 16px;
     letter-spacing: -0.02em;
   }
-
   .button-wrapper {
     align-self: flex-end;
-
     button {
       background-color: ${colors.black};
       font-size: 16px;
@@ -294,4 +263,3 @@ export const SecondModalFooter = styled.div`
     }
   }
 `
-
