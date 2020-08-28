@@ -3,7 +3,8 @@ import Slider from "../../components/Slider";
 
 import TravelIlustration from "../../assets/images/travel.svg";
 import ServicesIlustration from "../../assets/images/services.svg";
-import CarImag from "../../assets/images/frota/car1.png";
+import CarImage from "../../assets/images/van1.png";
+import SeatsImage from "../../assets/images/van2.png";
 
 import {
   Container,
@@ -46,7 +47,7 @@ const MainSection = ({servicesRef}) => {
 
           <div> 
             <VehicleCard>
-              <Car src={CarImag} alt="Imagem do Carro da Frota da Empresa"/>
+              <Car src={SeatsImage} alt="Imagem Interna da Frota da Empresa"/>
               <div>
                 <p>ATÉ 10 ASSENTOS</p>
               </div>
@@ -54,7 +55,7 @@ const MainSection = ({servicesRef}) => {
 
             </VehicleCard>
             <VehicleCard>
-              <Car src={CarImag} alt="Imagem do Carro da Frota da Empresa"/>
+              <Car src={CarImage} alt="Imagem do Carro da Frota da Empresa"/>
               <div>
                 <p>ATÉ 10 ASSENTOS</p>
               </div>
