@@ -58,7 +58,21 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
     const {departureDate, arrivalDate, timeDepartureDate, timeArrivalDate,startingPoint, destination, passengerQuantity} = formData;
 
     const msg = `
-      Olá desejo reservar uma viagem para o dia ${departureDate} as ${timeDepartureDate} horas ${hasArrivalInput ? `E a sua volta para o dia ${arrivalDate} ás ${timeArrivalDate}`: '' } do local ${startingPoint} até o local ${destination} para ${passengerQuantity} passageiros no valor de R$ 350,00. Podemos confirmar ?
+    Prezado Cliente,
+    Estamos a um ponto de partida para confirmar a sua próxima viagem com a Airport Zoom.
+    Em instantes lhe enviaremos um e-mail contendo as instruções pertinentes à contratação dos serviços que você solicitou, contendo a(s) data(s) e horário(s) da(s) partida(s)/retorno(s), origem(ns)/destino(s), tipo(s) de locação, quantidade de passageiros e valor(es) para pagamento, a fim de processarmos sua solicitação.
+    Teremos o prazer de serví-lo para que você e seus convidados aproveitem ao máximo essa experiência!
+    Dados solicitados para orçamento:
+    - ponto de partida:
+    - destino:
+    - data de partida :
+    - horário de partida
+    - data de retorno:
+    - horário de retorno:
+    - tipo de locação
+    - quantidade de passageiros
+    Att.,
+    Equipe Reserva AZ
     `
 
     const number = 5511984586000;
