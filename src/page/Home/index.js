@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
 
 import Modal from "../../components/Modal";
 import NavBar from "../../components/NavBar";

@@ -263,3 +263,42 @@ export const SecondModalFooter = styled.div`
     }
   }
 `
+
+export const AutocompleteWrapper = styled.div`
+  position: relative;
+`
+
+export const SuggestionsList = styled.div`
+  background-color: #fff;
+  box-shadow: 0px 2px 8px rgba(17, 14, 27, 0.09);
+  height: 150px;
+  width: 100%;
+  position: absolute;
+  bottom: -160px;
+  left: 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 0 0 10px 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 100;
+`
+
+export const SuggestionItem = styled.div`
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+  p {
+    font-size: 16px;
+    color: #000;
+    margin: 0;
+    margin-bottom: 3px;
+    max-height: 50px;
+
+  }
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+`
