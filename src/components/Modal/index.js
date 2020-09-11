@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {format, parseISO} from 'date-fns';
+import PlacesAutocomplete from 'react-places-autocomplete';
+
 import { 
   ModalContainer,
   Layer,
@@ -14,7 +16,10 @@ import {
   SecondModalDescription,
   ModalCardContainer,
   CardRow,
-  SecondModalFooter
+  SecondModalFooter,
+  SuggestionItem,
+  SuggestionsList,
+  AutocompleteWrapper
 } from "./styles.js";
 
 import closeIcon from '../../assets/images/closeIcon.svg';
@@ -44,8 +49,6 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
   const [formData, setFormData] = useState(initialState);
   const [hasArrivalInput, setHasArrivalInput] = useState(false);
   
-  console.log(formData)
-  
   const sendWhatsappMessage = useSendWhatsappMessage();
 
   const handleCloseModal = () => {
@@ -55,7 +58,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    const {departureDate, arrivalDate, timeDepartureDate, timeArrivalDate,startingPoint, destination, passengerQuantity} = formData;
+    const {departureDate, arrivalDate, timeDepartureDate, timeArrivalDate,startingPoint, destination, passengerQuantity, locationType} = formData;
 
     const msg = `
     Prezado Cliente,
@@ -63,14 +66,14 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
     Em instantes lhe enviaremos um e-mail contendo as instruções pertinentes à contratação dos serviços que você solicitou, contendo a(s) data(s) e horário(s) da(s) partida(s)/retorno(s), origem(ns)/destino(s), tipo(s) de locação, quantidade de passageiros e valor(es) para pagamento, a fim de processarmos sua solicitação.
     Teremos o prazer de serví-lo para que você e seus convidados aproveitem ao máximo essa experiência!
     Dados solicitados para orçamento:
-    - ponto de partida:
-    - destino:
-    - data de partida :
-    - horário de partida
-    - data de retorno:
-    - horário de retorno:
-    - tipo de locação
-    - quantidade de passageiros
+    - ponto de partida: ${startingPoint}
+    - destino: ${destination}
+    - data de partida: ${departureDate} 
+    - horário de partida: ${timeDepartureDate}
+    - data de retorno: ${arrivalDate}
+    - horário de retorno: ${timeArrivalDate}
+    - tipo de locação: ${locationType}
+    - quantidade de passageiros: ${passengerQuantity}
     Att.,
     Equipe Reserva AZ
     `
@@ -121,9 +124,19 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
 
   const handleInputChange = (event, inputName) => {
     const value = event.target.value;
+
+    if (inputName === 'passengerQuantity' && Number(value) <= 0 ) return;
     
     setFormData({...formData, [inputName]: value});
   }
+
+  const handleStartingPointingInput = text => {
+    setFormData({...formData, startingPoint: text});
+  } 
+  
+  const handleDestinationInput = text => {
+    setFormData({...formData, destination: text});
+  } 
 
   return (
     <>
@@ -144,15 +157,77 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
             <ModalForm>
               <CloseIcon src={closeIcon} alt="Fechar modal" onClick={handleCloseModal}/>
               <form onSubmit={handleSubmit}>
-                <InputField>
-                  <label>Ponto de partida</label>
-                  <input type="text" value={formData.startingPoint} onChange={(event) => handleInputChange(event, 'startingPoint')} />
-                </InputField>
+              <PlacesAutocomplete
+                value={formData.startingPoint} 
+                onChange={(text) => handleStartingPointingInput(text)}
+                onSelect={handleStartingPointingInput}
+              >
+                {
+                 ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
+                   return(
+                     <AutocompleteWrapper>
+                      <InputField >
+                        <label>Ponto de Partida</label>
+                        <input 
+                          type="text" 
+                          {...getInputProps({ placeholder: 'Digite o Endereço de Partida'})}
+                        />
+                      </InputField>
 
-                <InputField>
-                  <label>Destino</label>
-                  <input type="text" value={formData.destination} onChange={(event) => handleInputChange(event, 'destination')} />
-                </InputField>
+                      {suggestions.length > 0 && (
+                        <SuggestionsList  > 
+                          {suggestions.map((suggestion) => (
+                            <SuggestionItem 
+                              {...getSuggestionItemProps(suggestion)}
+                            >
+                              <p>{suggestion.description}</p>
+                            </SuggestionItem>
+                          ))}
+                        </SuggestionsList>
+                      )}
+
+                      
+                    </AutocompleteWrapper>
+                   )
+                 }
+                }
+              </PlacesAutocomplete>
+                
+              <PlacesAutocomplete
+                value={formData.destination} 
+                onChange={(text) => handleDestinationInput(text)}
+                onSelect={handleDestinationInput}
+              >
+                {
+                 ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
+                   return(
+                     <AutocompleteWrapper>
+                      <InputField >
+                        <label>Destino</label>
+                        <input 
+                          type="text" 
+                          {...getInputProps({ placeholder: 'Digite o Endereço de Destino'})}
+                        />
+                      </InputField>
+
+                      {suggestions.length > 0 && (
+                        <SuggestionsList  > 
+                          {suggestions.map((suggestion) => (
+                            <SuggestionItem 
+                              {...getSuggestionItemProps(suggestion)}
+                            >
+                              <p>{suggestion.description}</p>
+                            </SuggestionItem>
+                          ))}
+                        </SuggestionsList>
+                      )}
+
+                      
+                    </AutocompleteWrapper>
+                   )
+                 }
+                }
+              </PlacesAutocomplete>
 
                 <DateInputFieldWrapper>
                   <InputField isDateField>
