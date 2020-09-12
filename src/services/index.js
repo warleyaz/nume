@@ -1,9 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
-const baseURL = 'https://maps.googleapis.com';
+const baseURLGoogle = "https://maps.googleapis.com";
+const baseURLUvan = "https://uvan-empresa.herokuapp.com/api/v1";
 
-const api = axios.create({
-  baseURL
-})
+export const apiGoogle = axios.create({
+  baseURL: baseURLGoogle,
+});
 
-export default api;
+export const apiUvan = axios.create({
+  baseURL: baseURLUvan,
+});
