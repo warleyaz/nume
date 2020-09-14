@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { format, parseISO } from "date-fns";
+<<<<<<< HEAD
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
 import { getPrice } from "../../services/uvan";
+=======
+import PlacesAutocomplete from "react-places-autocomplete";
+>>>>>>> modal flex
 
 import {
   ModalContainer,
@@ -51,7 +55,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
     arrivalLatLng: "",
   };
 
-  const [modalScreen, setModalScreen] = useState(1);
+  const [modalScreen, setModalScreen] = useState(2);
   const [formData, setFormData] = useState(initialState);
   const [hasArrivalInput, setHasArrivalInput] = useState(false);
   const [startLatLng, setStartLatLng] = useState({});

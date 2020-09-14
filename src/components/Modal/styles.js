@@ -1,8 +1,8 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 import { colors } from "../../assets/colors";
 import { normalizeFont } from "../../assets/size";
 
-import CalculatorImage from '../../assets/images/calculator.png';
+import CalculatorImage from "../../assets/images/calculator.png";
 
 export const Layer = styled.div`
   position: absolute;
@@ -15,7 +15,7 @@ export const Layer = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100;
-`
+`;
 
 export const ModalContainer = styled.div`
   background-color: ${colors.white};
@@ -23,7 +23,13 @@ export const ModalContainer = styled.div`
   position: fixed;
   z-index: 200;
   border-radius: 16px;
-  @media (min-width: 200px) {
+  display: flex;
+  width: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  /*  @media (min-width: 200px) {
     width: 100vw;
     top: 10vh;
     position: absolute;
@@ -32,33 +38,33 @@ export const ModalContainer = styled.div`
     width: 100vw;
     top: 5vh;
     position: fixed;
-  } 
+  }
   @media (min-width: 700px) {
     width: 90vw;
     top: 5vh;
     left: 5vw;
     position: fixed;
-  } 
+  }
   @media (min-width: 1000px) {
     width: 80vw;
     top: 10vh;
     left: 10vw;
     position: fixed;
-  } 
+  }
   @media (min-width: 1200px) {
     width: 60vw;
     top: 10vh;
     left: 20vw;
     position: fixed;
-  } 
-`
+  } */
+`;
 
 export const FirstModalWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
   flex-wrap: wrap;
-`
+`;
 
 export const ModalDescription = styled.div`
   flex: 1;
@@ -75,11 +81,11 @@ export const ModalDescription = styled.div`
     font-weight: bold;
     margin-bottom: 40px;
   }
-`
+`;
 
 export const SecondModalDescription = styled.p`
   color: #474747;
-`
+`;
 
 export const ModalForm = styled.div`
   flex: 1;
@@ -109,29 +115,32 @@ export const ModalForm = styled.div`
       justify-content: center;
     }
   }
-`
+`;
 
 export const CloseIcon = styled.img`
   width: 15px;
   position: absolute;
-  top: ${({position}) => position ? position : 20}px; 
-  right: ${({position}) => position ? position : 20}px;
+  top: ${({ position }) => (position ? position : 20)}px;
+  right: ${({ position }) => (position ? position : 20)}px;
   cursor: pointer;
-`
+`;
 
 export const InputField = styled.div`
   flex-direction: column;
   margin-bottom: 16px;
   flex: 1;
-  ${({isDateField}) => isDateField ? css`
-      max-width: 48%;
-    ` : null}
+  ${({ isDateField }) =>
+    isDateField
+      ? css`
+          max-width: 48%;
+        `
+      : null}
   label {
     font-size: 14px;
     font-weight: 600;
-    color: ${colors.black}
+    color: ${colors.black};
   }
-  select{
+  select {
     border-radius: 4px;
     border: 1px solid #afafaf;
     background-color: ${colors.white};
@@ -139,7 +148,7 @@ export const InputField = styled.div`
     padding: 10px;
     font-size: 14px;
     color: #474747;
-     width: 100%; 
+    width: 100%;
   }
   input {
     width: 100%;
@@ -151,12 +160,12 @@ export const InputField = styled.div`
     font-size: 14px;
     color: #474747;
   }
-`
+`;
 
 export const DateInputFieldWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 export const SecondModalWrapper = styled.div`
   padding: 24px;
@@ -164,7 +173,7 @@ export const SecondModalWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const SecondModalHeader = styled.div`
   display: flex;
@@ -192,7 +201,7 @@ export const SecondModalHeader = styled.div`
     line-height: 44px;
     color: ${colors.black};
   }
-`
+`;
 
 export const ModalCardContainer = styled.div`
   box-shadow: 0px 2px 8px rgba(17, 14, 27, 0.09);
@@ -207,11 +216,11 @@ export const ModalCardContainer = styled.div`
     color: #1e1e1f;
     margin-bottom: 15px;
   }
-`
+`;
 
 export const CardRow = styled.div`
   display: flex;
-  flex:1;
+  flex: 1;
   align-items: center;
   flex-wrap: wrap;
   img {
@@ -232,7 +241,7 @@ export const CardRow = styled.div`
       line-height: 20px;
     }
   }
-`
+`;
 
 export const SecondModalFooter = styled.div`
   margin-top: 16px;
@@ -262,11 +271,11 @@ export const SecondModalFooter = styled.div`
       border: 1px solid #000;
     }
   }
-`
+`;
 
 export const AutocompleteWrapper = styled.div`
   position: relative;
-`
+`;
 
 export const SuggestionsList = styled.div`
   background-color: #fff;
@@ -282,7 +291,7 @@ export const SuggestionsList = styled.div`
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 100;
-`
+`;
 
 export const SuggestionItem = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -293,7 +302,6 @@ export const SuggestionItem = styled.div`
     margin: 0;
     margin-bottom: 3px;
     max-height: 50px;
-
   }
   overflow: hidden;
 
@@ -301,4 +309,4 @@ export const SuggestionItem = styled.div`
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.1);
   }
-`
+`;
