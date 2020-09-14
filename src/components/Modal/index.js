@@ -57,16 +57,11 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
     timeDepartureDate: "",
     locationType: "Fretamento",
     passengerQuantity: "",
-    startLatLng: "",
-    arrivalLatLng: "",
   };
 
   const [modalScreen, setModalScreen] = useState(2);
   const [formData, setFormData] = useState(initialState);
   const [hasArrivalInput, setHasArrivalInput] = useState(false);
-  const [startLatLng, setStartLatLng] = useState({});
-  const [arrivalLatLng, setArrivalLatLng] = useState({});
-  const [price, setPrice] = useState();
 
   const sendWhatsappMessage = useSendWhatsappMessage();
 
@@ -172,16 +167,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
 
     setFormData({ ...formData, [inputName]: value });
   };
-
-  const handleStartingPointingInput = (text) => {
-    geocodeByAddress(text)
-      .then((res) => getLatLng(res[0]))
-      .then((resLatLng) => setStartLatLng({ ...resLatLng }))
-      .catch((e) => console.error("Error", e));
-
-    setFormData({ ...formData, startingPoint: text });
-  };
-
+  
   const handleDestinationInput = (text) => {
     geocodeByAddress(text)
       .then((res) => getLatLng(res[0]))
