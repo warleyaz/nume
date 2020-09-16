@@ -61,7 +61,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
     arrivalLatLng: "",
   };
 
-  const [modalScreen, setModalScreen] = useState(2);
+  const [modalScreen, setModalScreen] = useState(1);
   const [formData, setFormData] = useState(initialState);
   const [hasArrivalInput, setHasArrivalInput] = useState(false);
   const [startLatLng, setStartLatLng] = useState({});
@@ -167,17 +167,16 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
 
   const handleInputChange = (event, inputName) => {
     const value = event.target.value;
-
     if (inputName === "passengerQuantity" && Number(value) <= 0) return;
-
-    setFormData({ ...formData, [inputName]: value });
+    setFormData({ ...formData, [inputName]: value })
   };
+
   const handleStartingPointingInput = (text) => {
     geocodeByAddress(text)
       .then((res) => getLatLng(res[0]))
       .then((resLatLng) => setStartLatLng({ ...resLatLng }))
       .catch((e) => console.error("Error", e));
-  
+  }
   const handleDestinationInput = (text) => {
     geocodeByAddress(text)
       .then((res) => getLatLng(res[0]))
@@ -458,4 +457,4 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
       </ModalContainer>
     </>
   );
-};
+}
