@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { format, parseISO } from "date-fns";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> get api price
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
 import { getPrice } from "../../services/uvan";
+<<<<<<< HEAD
 =======
 import PlacesAutocomplete from "react-places-autocomplete";
 >>>>>>> modal flex
+=======
+>>>>>>> get api price
 
 import {
   ModalContainer,
