@@ -167,16 +167,18 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
 
   const handleInputChange = (event, inputName) => {
     const value = event.target.value;
-    if (inputName === "passengerQuantity" && Number(value) <= 0) return;
-    setFormData({ ...formData, [inputName]: value })
-  };
 
-  const handleStartingPointingInput = (text) => {
+    if (inputName === "passengerQuantity" && Number(value) <= 0) return;
+
+    setFormData({ ...formData, [inputName]: value });
+  };
+   const handleStartingPointingInput = (text) => {
     geocodeByAddress(text)
       .then((res) => getLatLng(res[0]))
       .then((resLatLng) => setStartLatLng({ ...resLatLng }))
       .catch((e) => console.error("Error", e));
-  }
+    setFormData({...formData, startingPoint:text})
+   }
   const handleDestinationInput = (text) => {
     geocodeByAddress(text)
       .then((res) => getLatLng(res[0]))
@@ -184,7 +186,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
       .catch((e) => console.error("Error", e));
     setFormData({ ...formData, destination: text });
   };
-
+  console.log(formData);
   return (
     <>
       <Layer onClick={handleCloseModal} />
@@ -457,4 +459,4 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
       </ModalContainer>
     </>
   );
-}
+};
