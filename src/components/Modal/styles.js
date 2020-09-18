@@ -76,6 +76,10 @@ export const ModalDescription = styled.div`
   @media (min-width: 200px) {
     max-width: 100%;
   }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
   h2 {
     font-size: ${normalizeFont(34)};
     font-weight: bold;
