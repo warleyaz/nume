@@ -9,20 +9,20 @@ import CityIcon from "../../assets/images/CityTour.svg";
 import ViagensIcon from "../../assets/images/Viagens.svg";
 import TransladoIcon from "../../assets/images/Translado.svg";
 
-import { SliderCardContainer, SliderContainer } from "./styles";
+import { SliderCardContainer, SliderContainer} from "./styles";
 
-const SliderCard = ({ icon, title, description }) => (
+const SliderCard = ({ icon, title, description, setShowModal}) => (
   <div>
     <img src={icon} alt="Icone" />
     <h2>{title}</h2>
     <div className="content-wrapper">
       <p>{description}</p>
-      <button>Reservar</button>
+      <button onClick={() => setShowModal()}>Reservar</button>
     </div>
   </div>
 );
 
-const SliderComponent = () => {
+const SliderComponent = ({setShowModal}) => {
   const settings = {
     dots: false,
     infinite: false,
@@ -45,6 +45,7 @@ const SliderComponent = () => {
       <SliderContainer {...settings} className="slider-container">
         <SliderCardContainer>
           <SliderCard
+            setShowModal={setShowModal}
             icon={FretamentoIcon}
             title="FRETAMENTO"
             description="Evite imprevistos com esta eficiente condução. Para pequenos ou grandes grupos de passageiros."
@@ -53,6 +54,7 @@ const SliderComponent = () => {
 
         <SliderCardContainer>
           <SliderCard
+            setShowModal={setShowModal}
             icon={CityIcon}
             title="CITY TOUR"
             description="Você personaliza um itinerário turístico e garante praticidade ao conhecer uma nova cidade e seus pontos de interesse."
@@ -61,6 +63,7 @@ const SliderComponent = () => {
 
         <SliderCardContainer>
           <SliderCard
+            setShowModal={setShowModal}
             icon={ViagensIcon}
             title="VIAGENS"
             description="Para quem não abre mão da comodidade e segurança ao viajar em grupo, a AZ permite ao passageiro aproveitar a viagem do início ao fim."
@@ -69,6 +72,7 @@ const SliderComponent = () => {
 
         <SliderCardContainer>
           <SliderCard
+            setShowModal={setShowModal}
             icon={TransladoIcon}
             title="TRANSLADO"
             description="Oferecemos deslocamento ágil e de confiança. Ideal para reuniões, eventos corporativos e transporte aeroportuário."

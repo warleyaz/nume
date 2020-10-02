@@ -17,7 +17,7 @@ import {
   VehicleCard
 } from "./styles";
 
-const MainSection = ({servicesRef}) => {
+const MainSection = ({servicesRef, setShowModal}) => {
   return (
     <Container>
       <ContentWrapper>
@@ -33,7 +33,7 @@ const MainSection = ({servicesRef}) => {
           </p>
         </ApresentationWrapper>
 
-        <Slider></Slider>
+        <Slider setShowModal={() => setShowModal()} />
         <VehicleWrapper>
           <ServicesTravel src={ServicesIlustration} alt="Ilustração dos Serviços de Cada Veiculo"/>
             <p>
@@ -49,7 +49,7 @@ const MainSection = ({servicesRef}) => {
             <VehicleCard>
               <Car src={SeatsImage} alt="Imagem Interna da Frota da Empresa"/>
               <div>
-                <p>ATÉ 10 ASSENTOS</p>
+                <p>VAN ATÉ 9 ASSENTOS</p>
               </div>
               
 
@@ -57,7 +57,7 @@ const MainSection = ({servicesRef}) => {
             <VehicleCard>
               <Car src={CarImage} alt="Imagem do Carro da Frota da Empresa"/>
               <div>
-                <p>ATÉ 10 ASSENTOS</p>
+                <p>VAN EXECUTIVA ATÉ 13 ASSENTOS</p>
               </div>
              
 

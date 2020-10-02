@@ -28,7 +28,7 @@ export default () => {
         refs={{ footerRef, servicesRef }}
       />
       <Header setShowModal={() => setShowModal(true)} />
-      <MainSection servicesRef={servicesRef} />
+      <MainSection setShowModal={() => setShowModal(true)} servicesRef={servicesRef} />
       <Footer footerRef={footerRef} />
     </div>
   );

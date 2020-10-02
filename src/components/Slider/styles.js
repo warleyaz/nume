@@ -65,7 +65,6 @@ export const SliderCardContainer = styled.div`
         border: 0px;
         border-radius: 4px;
         margin-top: 24px;
-        /* max-width: 110px; */
       }
     }
 
