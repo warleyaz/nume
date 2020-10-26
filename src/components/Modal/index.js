@@ -97,7 +97,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
     Equipe Reserva AZ
     `;
 
-    const number = 5511984586000;
+    const number = 5511980586000;
 
     sendWhatsappMessage({ msg, number });
 
@@ -215,7 +215,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
                     return (
                       <AutocompleteWrapper>
                         <InputField>
-                          <label>Ponto de Partida</label>
+                          <label>Partida</label>
                           <input
                             type="text"
                             {...getInputProps({
@@ -291,7 +291,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
                     />
                   </InputField>
                   <InputField isDateField>
-                    <label>Horário Partida</label>
+                    <label>Horário</label>
                     <input
                       type="time"
                       value={formData.timeDepartureDate}
@@ -316,7 +316,7 @@ export default ({ id = "modal", onClose = () => {}, children }) => {
                     </InputField>
 
                     <InputField isDateField>
-                      <label>Horário de Retorno</label>
+                      <label>Horário</label>
                       <input
                         type="time"
                         value={formData.timeArrivalDate}
