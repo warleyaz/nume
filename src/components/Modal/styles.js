@@ -161,8 +161,9 @@ export const InputField = styled.div`
     background-color: ${colors.white};
     height: 40px;
     padding: 10px;
-    font-size: 14px;
+    font-size: 10px;
     color: #474747;
+
   }
 `;
 
